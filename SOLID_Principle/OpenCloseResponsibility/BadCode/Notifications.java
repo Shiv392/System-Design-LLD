@@ -1,4 +1,4 @@
-package OpenCloseResponsibility.BadCode;
+package SOLID_Principle.OpenCloseResponsibility.BadCode;
 
 //here sendNotification method has multiple condition to send Notification now
 //in futre if we want to add more notification service like whatsapp or slack
