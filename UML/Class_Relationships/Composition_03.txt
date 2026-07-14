@@ -1,0 +1,70 @@
+🔗 Dependency
+🤔 What is Dependency?
+Dependency means one class temporarily uses another class to complete its work.
+Dependency = Uses-A Relationship
+
+💡 Example 1
+After payment, send a notification.
+
+class PaymentService {
+    void pay() {
+        NotificationService notification = new NotificationService();
+        notification.send();
+    }
+}
+
+UML
+PaymentService - - - - > NotificationService
+✅ PaymentService only uses NotificationService.
+❌ It doesn't permanently store its reference.
+
+💡 Example 2
+class OrderService {
+    void placeOrder() {
+        EmailService.sendEmail();
+    }
+}
+
+OrderService depends on EmailService only to send an email.
+➡️ Dependency
+
+💡 Example 3
+Not Dependency (Association)
+class UserController {
+    private UserService userService;
+}
+
+UserController permanently holds a reference to UserService.
+➡️ Association
+
+Dependency
+class UserController {
+    void login(UserService userService) {
+        userService.login();
+    }
+}
+
+UserService is only used inside the method.
+➡️ Dependency
+
+
+📐 UML Symbol======>
+Association
+A -------- B
+
+Dependency
+A - - - - > B
+
+Dashed Arrow (- - - ->) means:
+
+A depends on B.
+
+🎯 Easy Trick
+
+Ask yourself:
+
+Does this class permanently hold the other object's reference?
+
+✅ Yes → Association / Aggregation / Composition
+
+❌ No, only uses it temporarily → Dependency

@@ -1,0 +1,44 @@
+◇ Aggregation
+🤔 What is Aggregation?
+
+Aggregation represents a Has-A relationship where the child can exist independently of the parent.
+Aggregation = Has-A Relationship + Independent Lifecycle
+
+💡 Example 1 (Best Example)
+A Team has multiple Players.
+Team ◇──────── Player
+✅ Team has Players.
+✅ If Team is dissolved, Players still exist.
+✅ Players can join another Team.
+➡️ Aggregation
+
+💡 Example 2
+A Library has multiple Books.
+Library ◇──────── Book
+✅ Library has Books.
+✅ If Library is closed, Books can be moved to another Library.
+➡️ Aggregation
+
+💻 Java Example
+class Team {
+    private List<Player> players;
+}
+
+Team only keeps references to Player objects.
+Players are not created by Team and can exist independently.
+
+
+📐 UML Symbol
+Aggregation A ◇──────── B
+
+The Hollow Diamond (◇) is placed on the Parent (Whole) side.
+
+🎯 Easy Trick
+
+Ask yourself:
+
+If the Parent is deleted, can the Child still exist?
+
+✅ Yes → Aggregation
+
+❌ No → Composition

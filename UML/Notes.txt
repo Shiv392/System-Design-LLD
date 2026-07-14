@@ -1,0 +1,5 @@
+1. What is UML ?
+UML Stands for "Unified Modeling Language".
+This is Not an programing language, this is basically static structure that helps
+to understand how system will look like also what they will do.
+

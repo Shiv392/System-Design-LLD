@@ -1,0 +1,93 @@
+🧭 Navigability
+🤔 What is Navigability?
+
+Navigability tells us:
+
+Which object knows (or can access) another object?
+
+It defines the direction in which one class can navigate to another.
+
+❓ Why do we need Navigability? Suppose we have a relationship:
+User -------- Booking
+Now ask yourself:
+
+🤔 Does User know about Booking?
+🤔 Does Booking know about User?
+🤔 Or do both know each other?
+
+Navigability answers this question.
+
+📌 One-Way Navigability (Unidirectional) ---->
+Java Example
+
+class Booking {
+    private User user;
+}
+
+class User {
+
+}
+
+UML : 
+Booking -----------> User
+
+Explanation
+✅ Booking has a reference to User.
+✅ Booking can access User.
+❌ User cannot access Booking.
+
+Think of it like: Booking knows User, User doesn't know Booking
+
+📌 Bi-Directional Navigability
+
+Java Example
+class User {
+    private List<Booking> bookings;
+}
+
+class Booking {
+    private User user;
+}
+
+UML : 
+User <-------------> Booking
+Explanation
+✅ User knows all Bookings.
+✅ Booking knows its User.
+
+Both objects can access each other.
+
+🎬 Real World Example
+
+Order & Customer
+class Order {
+    Customer customer;
+}
+
+UML
+
+Order -------------> Customer
+
+Order knows who placed it.
+
+But Customer doesn't necessarily store every Order object.
+
+Another implementation
+
+class Customer {
+
+    List<Order> orders;
+
+}
+
+class Order {
+
+    Customer customer;
+
+}
+
+UML
+
+Customer <-------------> Order
+
+Now both know each other.

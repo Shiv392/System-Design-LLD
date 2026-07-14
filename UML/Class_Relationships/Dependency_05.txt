@@ -1,0 +1,67 @@
+Dependency means one class temporarily uses another class to complete its work.
+
+Keyword yaad rakh:
+Uses-A
+
+Example 1
+Payment hone ke baad, Notification bhejna hai.
+
+PaymentService -----> NotificationService
+public class PaymentService{
+    public void pay(){
+        NotificationService notification = new NotificationService();
+        notification.notify();
+    }
+}
+
+PaymentService sirf NotificationService ko use kar raha hai. Uske andar permanently store nahi kar raha.
+
+Example 2
+OrderService
+class OrderService {
+    void placeOrder() {
+        EmailService.sendEmail();
+    }
+}
+
+OrderService ka EmailService se relation kya hai?
+Dependency.
+Kyun?
+Sirf email bhejne ke liye use kiya.
+
+Example 3
+Controller
+class UserController {
+    UserService userService;
+
+}
+
+Agar UserController ke paas permanently UserService ka reference hai, to ye Association ho sakta hai.
+Lekin agar
+void login(UserService service) {
+    service.login();
+
+}
+
+Method ke parameter ke through sirf use kiya,
+to ye Dependency hai.
+
+UML Symbol
+Association : A -------- B
+Dependency : A - - - - > B
+
+Notice:
+
+Dashed line - - - > Arrow
+MATLAB : A depends on B.
+
+Easy Trick
+Main sirf ek question puchta hoon ---------->
+Kya object ke paas dusra object permanently hai?
+Yes
+↓
+Association/Aggregation/Composition
+
+Sirf method ke andar use kar raha hai?
+↓
+Dependency

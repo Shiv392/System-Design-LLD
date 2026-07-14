@@ -1,0 +1,69 @@
+🤝 Association
+🤔 What is Association?
+
+Association represents a relationship between two classes.
+Association = Related-To Relationship
+Both objects can exist independently.
+
+
+💡 Example 1
+A Student borrows a Book.
+
+Student -------- Book
+✅ Student and Book are related.
+✅ If Student is deleted, Book still exists.
+✅ If Book is removed, Student still exists.
+➡️ Association
+
+💡 Example 2
+A Teacher teaches a Student.
+
+Teacher -------- Student
+Teacher and Student know each other, but neither owns the other.
+➡️ Association
+
+💻 Java Example
+class Student {
+    private Book book;
+}
+
+Here, Student has a reference to Book, but Book can exist independently.
+
+📐 UML Symbol
+Association
+
+A -------- B
+
+A simple solid line represents an Association.
+
+🎯 Easy Trick
+
+Ask yourself:
+
+Are these two classes simply related to each other?
+
+✅ Yes → Association
+
+Then ask:
+
+Can both objects exist independently?
+
+✅ Yes → Association
+
+⭐ Quick Revision
+Association
+
+✔ Related-To Relationship
+✔ Independent Lifecycle
+✔ No Ownership
+✔ Solid Line (--------)
+💡 Interview Tip
+
+Association is the most basic relationship in UML.
+
+Don't immediately think of Aggregation or Composition.
+
+First ask:
+
+Are they related?
+Can both exist independently?

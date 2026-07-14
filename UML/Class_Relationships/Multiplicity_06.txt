@@ -1,0 +1,112 @@
+ Sabse pehle WHY?
+
+Humne relationship bana diya.
+User -------- Booking
+
+Ab question.
+
+Ek User kitni Bookings kar sakta hai?
+1?
+10?
+100?
+Infinite?
+Relationship sirf connection batata hai.
+
+Multiplicity batata hai:
+Kitne objects ek dusre se connected ho sakte hain.
+
+Example 1 : 
+Netflix
+User -------- Subscription
+
+Question.
+Ek User ke kitne active Subscription honge?
+Generally
+👉 1
+Ek Subscription kitne Users ka hoga?
+👉 1
+
+To
+
+User 1 -------- 1 Subscription
+Ye One-to-One hai.
+
+Example 2
+BookMyShow
+User -------- Booking
+
+Ek User
+↓
+100 Booking kar sakta hai.
+Ek Booking
+↓
+Sirf ek User ki hogi.
+
+Diagram
+User 1 -------- * Booking
+Ya
+User 1 -------- 0..* Booking
+Ye One-to-Many hai.
+
+Example 3
+Movie
+Movie -------- Actor
+Ek Movie me
+↓
+Bahut Actors.
+
+Ek Actor
+↓
+Bahut Movies.
+
+Diagram
+Movie * -------- * Actor
+
+Ye Many-to-Many hai.
+
+Example 4
+Person
+Person -------- Passport
+Ek Person
+↓
+Ek Passport.
+
+Ek Passport
+↓
+Ek Person.
+1 -------- 1
+
+UML Symbols
+a. Exactly One =======> 1
+
+b. Zero or One =======> 0..1
+Example
+Employee
+↓
+Parking Slot
+
+Sab employees ke paas parking nahi hoti.
+
+To
+
+Employee 1 -------- 0..1 ParkingSlot
+
+c. Zero to Many =====> 0..*
+Example
+User
+↓
+Orders
+Naya user hai.
+Order zero bhi ho sakte hain.
+100 bhi.
+User 1 -------- 0..* Order
+
+d. One to Many ==========> 1..*
+Example
+Order
+↓
+OrderItems
+Har Order me kam se kam
+↓
+1 item to hoga hi.
+Order 1 -------- 1..* OrderItem

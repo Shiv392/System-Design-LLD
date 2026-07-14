@@ -1,0 +1,41 @@
+Inheritance (Generalization) ====================>
+
+Car is a Vehicle | Bike is a Vehicle | Truck is a Vehicle 
+i.e Inheritance shows "is-A" relationship.
+class Vehicle {
+    String registrationNumber;
+    void start(){}
+}
+class Car extends Vehicle {}
+class Bike extends Vehicle {}
+
+UML
+            Vehicle
+               ▲
+               |
+        ----------------
+        |              |
+      Car           Bike
+
+Ye jo hollow triangle (△) hai, wo Parent ki taraf point karta hai.
+Matlab
+Car extends Vehicle.
+Bike extends Vehicle.
+
+Employee
+             Employee
+                 ▲
+         ----------------
+         |              |
+     Developer      Tester
+
+Developer IS-A Employee.
+Tester IS-A Employee.
+
+Payment
+            Payment
+               ▲
+      ------------------
+      |                |
+ CardPayment      UPIPayment
+CardPayment IS-A Payment
