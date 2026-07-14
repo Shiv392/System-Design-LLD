@@ -1,0 +1,92 @@
+# 📘 Sequence Diagram
+
+# 🤔 What is a Sequence Diagram?
+A **Sequence Diagram** shows how different objects communicate with each other **over time** to complete a task.
+It focuses on the **order of interactions** between objects.
+
+> **Class Diagram** → What classes exist?  
+> **Sequence Diagram** → How those classes interact at runtime?
+
+---
+
+# ❓ Why do we need it?
+A Class Diagram only tells us the structure of the system.
+A Sequence Diagram helps us understand:
+
+- Which object starts the process?
+- Which object calls the next object?
+- What is the execution order?
+- How the request and response flow through the system?
+
+---
+
+# 💡 Example: User Login
+
+```text
+👤 User
+    |
+    | Login Request
+    v
+LoginController
+    |
+    v
+LoginService
+    |
+    v
+UserRepository
+    |
+    v
+Database
+    |
+    v
+JWTService
+    |
+    v
+Response
+```
+
+### Flow
+
+1. User sends a login request.
+2. Controller receives the request.
+3. Service validates the user.
+4. Repository fetches user data.
+5. JWT token is generated.
+6. Response is returned to the user.
+
+---
+
+# 🎯 Easy Trick
+
+> **Sequence Diagram = Who calls whom, and in what order?**
+
+---
+
+# ⭐ Quick Revision
+
+- ✔ Shows runtime flow
+- ✔ Shows object interaction
+- ✔ Shows order of execution
+- ✔ Used to visualize API or business workflows
+
+---
+
+# 📚 Learning Outcome
+
+After completing this folder, you should be able to:
+
+- Understand runtime object interactions.
+- Draw Sequence Diagrams for backend APIs.
+- Visualize request and response flow.
+- Explain execution order in LLD interviews.
+
+---
+
+# 🚀 Practice Ideas
+
+- Login API
+- User Registration
+- OAuth Login
+- RBAC Authentication
+- Movie Ticket Booking
+- Payment Processing

@@ -21,6 +21,8 @@ With UML:
 
 🏗️ What is a Class?
 A Class is a blueprint for creating objects.
+A class can be anything like Entity, Services, Repository, Utility, Strategy, Factor,
+Validators, Notification Service, Payment GateWay, Logger etc. It should exist.
 
 It defines:
 📦 What data an object stores (Attributes)

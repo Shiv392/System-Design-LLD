@@ -1,0 +1,101 @@
+# 📘 Activity Diagram
+
+Welcome to the **Activity Diagram** section.
+
+This folder contains the basics of UML Activity Diagrams with simple examples. The goal is to understand **how a business process or workflow executes from start to finish.**
+
+---
+
+# 🤔 What is an Activity Diagram?
+
+An **Activity Diagram** represents the **workflow of a system or business process**.
+
+It focuses on the **sequence of activities, decisions, and execution flow**.
+
+> **Class Diagram** → What classes exist?  
+> **Sequence Diagram** → How objects interact?  
+> **Activity Diagram** → How the process flows?
+
+---
+
+# ❓ Why do we need it?
+
+An Activity Diagram helps us understand:
+
+- What is the starting point?
+- What steps are executed?
+- Where are the decision points?
+- What happens if a condition is true or false?
+- How does the process end?
+
+---
+
+# 💡 Example: User Login
+
+```text
+Start
+   |
+Enter Email & Password
+   |
+Credentials Valid?
+   |
++---------+
+|         |
+Yes       No
+|         |
+Generate  Show Error
+JWT       |
+|         |
+Dashboard End
+|
+End
+```
+
+### Flow
+
+1. User enters credentials.
+2. System validates them.
+3. If credentials are valid, generate a JWT token.
+4. Redirect the user to the Dashboard.
+5. Otherwise, display an error message.
+6. End the process.
+
+---
+
+# 🎯 Easy Trick
+
+> **Activity Diagram = What happens next?**
+
+Think of it as a **flowchart** for your application's business logic.
+
+---
+
+# ⭐ Quick Revision
+
+- ✔ Shows workflow
+- ✔ Shows business process
+- ✔ Shows decisions and conditions
+- ✔ Shows execution flow from Start to End
+
+---
+
+# 📚 Learning Outcome
+
+After completing this folder, you should be able to:
+
+- Understand business workflows.
+- Draw Activity Diagrams for backend features.
+- Visualize decision-making processes.
+- Explain application flow in LLD interviews.
+
+---
+
+# 🚀 Practice Ideas
+
+- User Login
+- User Registration
+- Forgot Password
+- Movie Ticket Booking
+- Payment Processing
+- Order Placement
+- Food Delivery Workflow
