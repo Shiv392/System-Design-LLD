@@ -1,0 +1,109 @@
+🤔 What is UML?
+
+UML (Unified Modeling Language) is not a programming language.
+It is a standard visual modeling language used to design and represent the structure and behavior of a software system before writing code.
+Think of UML as the blueprint of a software application, just like an architect creates a blueprint before constructing a building.
+
+❓ What Problem Does UML Solve?
+Without UML:
+
+❌ Everyone imagines the system differently.
+❌ Developers may misunderstand requirements.
+❌ Difficult to explain architecture to team members.
+❌ Hard to identify design issues before coding.
+
+With UML:
+✅ Visualizes the system before implementation.
+✅ Improves communication among developers.
+✅ Helps identify classes and relationships.
+✅ Makes LLD and HLD easier to understand.
+
+
+🏗️ What is a Class?
+A Class is a blueprint for creating objects.
+
+It defines:
+📦 What data an object stores (Attributes)
+⚙️ What actions an object performs (Methods)
+
+Example:
+
+User
+Movie
+Booking
+Payment
+These are all classes.
+
+
+📐 UML Class Structure
+A UML Class is divided into 3 sections.
+
++---------------------------+
+|          Movie(class Name)|
++---------------------------+
+| - id : Long (Attributes)  |
+| - title : String          |
+| - rating : double         |
++---------------------------+
+| + play() : void (Methods) |
+| + getRating() : double    |
++---------------------------+
+
+1️⃣ Class Name : Represents the entity.
+
+Movie
+2️⃣ Attributes : Represents the data/state of the object.
+
+Example:
+id : Long
+title : String
+rating : double
+
+3️⃣ Methods (Operations) : Represents the behavior/functionality of the object.
+
+Example:
+play()
+pause()
+getRating()
+📦 Attributes
+
+Attributes represent the state (data) of an object.
+
+Example:
+
+title : String
+duration : int
+rating : double
+
+👉 Usually Nouns.
+
+⚙️ Methods (Operations)
+
+Methods represent the behavior of an object.
+
+Example:
+
+play()
+pause()
+updateRating()
+
+👉 Usually Verbs.
+
+🔐 Access Modifiers
+Symbol	Visibility	Java Equivalent
++	Public	public
+-	Private	private
+#	Protected	protected
+~	Package	package-private
+
+Example:
+
++----------------------------+
+|          User              |
++----------------------------+
+| - id : Long                |
+| - name : String            |
++----------------------------+
+| + login() : boolean        |
+| + logout() : void          |
++----------------------------+
