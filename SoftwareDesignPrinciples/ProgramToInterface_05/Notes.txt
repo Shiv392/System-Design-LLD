@@ -1,0 +1,33 @@
+5. Program to an Interface
+
+"Depend on abstractions (interfaces), not concrete implementations. 
+This reduces coupling, improves flexibility, and allows implementations to change without affecting client code."
+
+Why?
+Suppose tum directly kisi class par depend karte ho.
+
+class EmailService {
+    public void send() {
+        System.out.println("Sending Email");
+    }
+}
+
+class NotificationService {
+    private EmailService emailService = new EmailService();
+    public void notifyUser() {
+        emailService.send();
+    }
+}
+
+Ab requirement aayi:
+SMS
+WhatsApp
+Push Notification
+
+Ab?
+
+NotificationService ko modify karna padega.
+
+❌ Tight Coupling.
+
+

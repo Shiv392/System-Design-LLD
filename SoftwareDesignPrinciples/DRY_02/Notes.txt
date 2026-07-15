@@ -1,0 +1,49 @@
+DRY : Don't Repeat Yourself.
+
+Why?
+Same logic ko multiple jagah likh doge to problem kya hogi?
+Suppose tax calculation 10 files me likha hai.
+Ab tax rule change hua.
+Ab tumhe 10 jagah change karna padega.
+Agar 1 jagah bhool gaye? 💥 Bug.
+
+Isliye DRY bolta hai:
+"Every piece of knowledge should have a single source of truth."
+Yaani same business logic ek hi jagah hona chahiye.
+
+Real Project Example
+Suppose tumhare backend me:
+
+UserService
+OrderService
+PaymentService
+
+Sabme password hashing likh diya. ❌ DRY violation.
+Better:
+PasswordUtil
+    hashPassword()
+    verifyPassword()
+Sab services usko reuse karein.
+
+# DRY ≠ Copy-Paste hi nahi
+DRY sirf code duplication ke baare me nahi hai.
+Ye bhi DRY violation hai:
+if(role.equals("ADMIN")) { ... }
+
+...
+
+if(role.equals("ADMIN")) { ... }
+
+...
+
+if(role.equals("ADMIN")) { ... }
+
+Better:
+
+isAdmin(User user)
+
+Ek hi method.
+
+Interview Summary
+
+"Don't duplicate business logic. Keep a single source of truth so future changes happen in one place only."

@@ -1,0 +1,39 @@
+❌ Bad Design (Inheritance)
+Suppose tum game bana rahe ho.
+
+class Bird {
+    void fly() {
+        System.out.println("Flying...");
+    }
+}
+
+Ab Sparrow.
+class Sparrow extends Bird {
+
+}
+
+✔️ Perfect.
+Ab Penguin.
+
+class Penguin extends Bird {
+
+}
+
+Problem. Penguin fly nahi karta.
+Lekin usko
+
+fly()
+
+inherit ho gaya.
+
+Ab kya karoge?
+
+class Penguin extends Bird {
+
+    @Override
+    void fly() {
+        throw new UnsupportedOperationException();
+    }
+}
+
+😂 Design hi kharab ho gaya.
