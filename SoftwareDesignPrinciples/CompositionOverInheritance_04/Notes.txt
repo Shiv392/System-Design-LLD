@@ -1,0 +1,12 @@
+4. Composition over Inheritance
+Why?
+Java me inheritance bahut powerful hai.
+
+Lekin problem tab hoti hai jab hum code reuse ke liye inheritance use karne lagte hain.
+
+Inheritance ka matlab hai: "IS-A Relationship"
+
+Composition ka matlab hai: "HAS-A Relationship"
+
+Aur real projects me HAS-A zyada flexible hota hai.
+

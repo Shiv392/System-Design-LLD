@@ -1,0 +1,50 @@
+✅ Good Design (Composition)
+interface FlyBehaviour {
+    void fly();
+}
+
+Implementation
+
+class CanFly implements FlyBehaviour {
+    public void fly() {
+        System.out.println("Flying...");
+    }
+}
+class CannotFly implements FlyBehaviour {
+    public void fly() {
+        System.out.println("Cannot Fly");
+    }
+}
+
+Bird Class ---------------------->
+class Bird {
+    private FlyBehaviour flyBehaviour;
+    Bird(FlyBehaviour flyBehaviour) {
+        this.flyBehaviour = flyBehaviour;
+    }
+    public void fly() {
+        flyBehaviour.fly();
+    }
+}
+
+Use Case ----------------------->
+
+Main.java 
+
+Bird sparrow = new Bird(new CanFly());
+Bird penguin = new Bird(new CannotFly());
+
+sparrow.fly();
+penguin.fly();
+
+
+Why Composition is Better? Kal requirement aayi: Robot Bird.
+Bas
+class RocketFly implements FlyBehaviour {
+
+}
+Aur
+Bird robot = new Bird(new RocketFly());
+Done.
+
+Bird class touch bhi nahi hui.

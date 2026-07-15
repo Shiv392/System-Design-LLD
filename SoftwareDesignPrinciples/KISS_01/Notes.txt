@@ -1,0 +1,25 @@
+Kiss :
+Keep It Simple Stupid.
+
+Why?
+Developers kabhi-kabhi simple problem ka bhi over-engineered solution bana dete hain.
+
+Result:
+Hard to read
+Hard to debug
+Hard to maintain
+
+Goal: Agar simple solution kaam kar raha hai, to unnecessary complexity mat lao.
+
+Real Example
+Suppose login page me sirf : Email | Password chahiye.
+Koi developer bana de - 
+Strategy Pattern
+Factory
+Builder
+Abstract Factory
+
+Sirf login ke liye. Ye KISS violate karta hai.
+
+In Short : "Always choose the simplest solution that correctly solves the problem"
+

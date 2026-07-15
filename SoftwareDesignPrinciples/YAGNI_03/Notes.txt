@@ -1,0 +1,30 @@
+YAGNI (You Aren't Gonna Need It)
+Why?
+Developers aksar sochte hain: "Future me shayad ye feature aa jaye."
+Aur us future ke liye aaj hi code likh dete hain.
+
+Result?
+Extra classes
+Extra methods
+Unused code
+Maintenance badh jati hai
+
+YAGNI bolta hai: "Jo aaj requirement nahi hai, uske liye aaj code mat likho."
+
+Real Project Example
+Manager bolta hai: "Abhi sirf Google Login chahiye."
+Developer bana deta hai:
+
+OAuthFactory
+GoogleStrategy
+FacebookStrategy
+TwitterStrategy
+LinkedInStrategy
+GithubStrategy
+
+😅 Jabki requirement sirf Google Login ki thi.
+Ye over-engineering hai.
+YAGNI kehta hai:
+Google Login
+Bas.
+Baaki jab requirement aaye tab implement karo.

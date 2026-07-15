@@ -1,0 +1,53 @@
+✅ Good Design
+
+Pehle interface banao.
+
+interface NotificationService {
+    void send();
+}
+
+Implementations
+class EmailNotification implements NotificationService {
+    public void send() {
+        System.out.println("Sending Email");
+    }
+}
+class SmsNotification implements NotificationService {
+    public void send() {
+        System.out.println("Sending SMS");
+    }
+}
+
+Ab client
+class UserService {
+    private NotificationService notification;
+
+    UserService(NotificationService notification) {
+        this.notification = notification;
+    }
+
+    public void register() {
+        notification.send();
+    }
+}
+
+Use
+
+UserService user1 = new UserService(new EmailNotification());
+
+UserService user2 = new UserService(new SmsNotification());
+
+Why is this better?
+Kal requirement aayi:
+
+WhatsApp Notification Bas 
+class WhatsAppNotification implements NotificationService {
+    public void send() {
+
+    }
+}
+
+new UserService(new WhatsAppNotification());
+
+Done.
+UserService me ek line bhi change nahi hui.
