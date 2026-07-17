@@ -1,0 +1,58 @@
+Definition ⭐⭐⭐⭐⭐
+Singleton is a Creational Design Pattern that ensures a class has only one instance and provides a global access point to that instance.
+
+Simple Hindi me: 📝📝📝📝
+Singleton ek aisa design pattern hai jo guarantee karta hai ki kisi class ka sirf ek hi object banega, aur application ke kisi bhi part se usi object ko access kiya ja sakta hai.
+
+Problem : 🤷‍♂️🤷‍♂️🤷‍♂️🤷‍♂️
+Generally jb hm jave me ye likht hai 
+Logger logger1 = new Logger();
+Logger logger2 = new Logger();
+Logger logger3 = new Logger();
+
+=> yahd har new keyword ek new object banata hai & memory me logger1, logger2 & logger3 teen
+alg alg objects hote hai. 
+Har class ke liye ye problem nahi hai, lekin kuch classes aisi hoti hain jinke multiple objects banana galat hota hai.
+Examples: 😒😒
+Logger
+Configuration Manager
+Cache Manager
+Application Settings
+Printer Spooler
+In sab me ideally ek hi shared object hona chahiye.
+
+Solution : 😍😍😍 (SingleTon Pattern)
+Singleton Pattern do kaam karta hai:
+Object creation ko control karta hai.
+Pure application ko wahi ek object use karne deta hai.
+
+Iske liye:
+
+Constructor ko private kar dete hain.
+Class khud apna object manage karti hai.
+Bahar ke log new nahi kar sakte.
+
+------> Isko hi Lazy Initialization Singleton kahte hai. 
+
+
+#SingleTon Evaluation ========================>
+1. Lazy Singleton
+        │
+        │ (Not Thread Safe)
+        ▼
+2. Synchronized Singleton
+        │
+        │ (Slow)
+        ▼
+3. Double Checked Locking
+        │
+        │ (Fast + Thread Safe)
+        ▼
+4. Bill Pugh Singleton
+        │
+        │ (Best in Java)
+        ▼
+5. Enum Singleton
+        │
+        ▼
+(Most Secure)
