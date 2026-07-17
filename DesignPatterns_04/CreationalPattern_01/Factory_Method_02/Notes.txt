@@ -105,4 +105,3 @@ to change in factory class not in whole application.
 
 Disadvantages ==========>
 1. New Extrac factory class.
-2. 

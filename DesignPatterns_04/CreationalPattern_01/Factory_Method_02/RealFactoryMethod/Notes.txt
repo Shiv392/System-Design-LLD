@@ -1,0 +1,101 @@
+Problem : Here in the PaymentFactory class 
+public class PaymentFactory {
+    public static PaymentInterface getPayment(String type){
+        if("UPI".equals(type)){
+            return new UPIPayment();
+        }
+        if("CARD".equals(type)){
+            return new CardPayment();
+        }
+        return null;
+    }
+}
+ 
+Here we are playing with multiple if-else this breaks Open close principle because it 
+is not open for extention.
+now tomorrow, if need to add WalletPayment, then again create if block.
+Factory ne sirf itna kiya
+Client
+↓
+Factory
+↓
+Concrete Classes
+
+Client clean ho gaya. Lekin Factory khud abhi bhi modify ho rahi hai. Isliye ise Simple Factory bolte hain.
+
+#Solution ----> Instead of creating factor class for different classes, we can create 
+for each class.
+like UPIFactory to create UPIclass object and use this UPI Factory into the client to get 
+the UPIClass object.
+
+This is called Real Factory Method.
+
+Step1 : Create an interface for Factory Class : PaymentFactoryInterface
+public interface PaymentFactoryInterface {
+    PaymentInterface createPayment();
+}
+
+Step2 : Now create CardFactory & UPIFactory that will return object of UPIClass and CardClass.
+public class UPIFactory implements PaymentFactoryInterface {
+    @Override
+    public PaymentInterface createPayment(){
+        return new UPIPayment();
+    }
+}
+public class CardFactory implements PaymentFactoryInterface {
+    @Override
+    public PaymentInterface createPayment(){
+        return new CardPayment();
+    }
+}
+
+Step3 : Use This factory classes in the clientpublic class Main {
+    public static void main(String[] args) {
+        PaymentFactoryInterface upiFactory = new UPIFactory();
+        PaymentFactoryInterface cardFactory = new CardFactory();
+
+        PaymentInterface upiPayment = upiFactory.createPayment();
+        PaymentInterface cardPayment = cardFactory.createPayment();
+
+        upiPayment.pay();
+        cardPayment.pay();
+    }
+}
+
+So ===========>
+Simple Factory
+Ek hi factory sab kuch kar rahi hai.
+
+                PaymentFactory
+                     │
+      ┌──────────────┼──────────────┐
+      │              │              │
+   UPI Payment   Card Payment   Wallet Payment
+Code:
+if(type.equals("UPI"))
+if(type.equals("CARD"))
+if(type.equals("WALLET"))
+
+Problem:
+Factory bahut badi hoti jayegi.
+Har naye payment par Factory modify karni padegi & OCP Violates.
+
+Factory Method (GoF) : 
+Responsibility divide kar do.
+          PaymentFactory (Interface)
+                    ▲
+        ┌───────────┼───────────┐
+        │           │           │
+   UpiFactory  CardFactory  WalletFactory
+        │           │           │
+        ▼           ▼           ▼
+  UpiPayment  CardPayment  WalletPayment
+
+
+Factory Method ka matlab "har object ki alag factory" nahi hai.
+Matlab hai: Har product family ya responsibility ki apni factory ho.
+
+Jaise:
+PaymentFactory → Payment objects
+NotificationFactory → Notification objects
+
