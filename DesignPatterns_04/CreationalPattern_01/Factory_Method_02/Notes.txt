@@ -1,0 +1,108 @@
+What is Factory Method -
+Factory method is a creational design patten that provides method for creating object without
+exposing object creation logic to the client.
+
+Client can't create the object, get it from factory.
+
+Suppose tum Payment System bana rahe ho.
+
+if(type.equals("UPI")){
+    payment = new UpiPayment();
+}
+else if(type.equals("Card")){
+    payment = new CardPayment();
+}
+else if(type.equals("NetBanking")){
+    payment = new NetBankingPayment();
+}
+payment.pay();
+
+Ye code kaam to kar raha hai.
+Lekin problems dekho.
+
+1. Tight Coupling : Client know each class well. new UpiPayment(), new CardPayment() etc.
+now tommorow, if we need to integrate WalletPayment then we have to change Client Class.
+2. Violates Open close principle
+3. Violates Single responsibility as client is doing more then one things. 
+
+Solution ========>
+Client should get object but should not care how object created.  This is done by Factory method. 
+Ek Factory bana do.
+Client
+↓
+PaymentFactory
+↓
+UPI
+Card
+NetBanking
+
+Ab -> Client sirf Factory ko bolega.
+Payment payment = PaymentFactory.getPayment("UPI");
+Factory khud decide karegi : new UpiPayment();
+
+Implementation ===============>
+Step 1 : Create Interface
+interface Payment{
+    void pay();
+}
+
+Step 2 : classess
+class UpiPayment implements Payment{
+    public void pay(){
+        System.out.println("UPI Payment");
+    }
+}
+class CardPayment implements Payment{
+    public void pay(){
+        System.out.println("Card Payment");
+    }
+}
+
+Step 3 : Factory
+class PaymentFactory{
+    public static Payment getPayment(String type){
+        if(type.equals("UPI")){
+            return new UpiPayment();
+        }
+        if(type.equals("CARD")){
+            return new CardPayment();
+        }
+        return null;
+    }
+}
+
+Step 4 : Client
+Payment payment = PaymentFactory.getPayment("UPI");
+payment.pay();
+
+Now here Main client class never wrote new Payment() still it got object because of factory class.
+
+Before Factory
+Client
+   │
+   ├── new UpiPayment()
+   ├── new CardPayment()
+   └── new NetBankingPayment()
+Client sab jaanta hai.
+
+After Factory
+Client
+   │
+   ▼
+PaymentFactory
+   │
+   ├── UpiPayment
+   ├── CardPayment
+   └── NetBankingPayment
+
+
+Advantage =========>
+1. Loose Coupling : Client dont know the implementation.
+2. Open Close Principle : Client is open for extention.
+3. Centralized Object creation 
+4. Secure Changes | Scalable : in case UpiPayment changes to SecuryUPIPayment then we only need
+to change in factory class not in whole application.
+
+Disadvantages ==========>
+1. New Extrac factory class.
+2. 
