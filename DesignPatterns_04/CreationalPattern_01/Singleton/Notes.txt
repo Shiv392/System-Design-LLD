@@ -33,3 +33,26 @@ Class khud apna object manage karti hai.
 Bahar ke log new nahi kar sakte.
 
 ------> Isko hi Lazy Initialization Singleton kahte hai. 
+
+
+#SingleTon Evaluation ========================>
+1. Lazy Singleton
+        │
+        │ (Not Thread Safe)
+        ▼
+2. Synchronized Singleton
+        │
+        │ (Slow)
+        ▼
+3. Double Checked Locking
+        │
+        │ (Fast + Thread Safe)
+        ▼
+4. Bill Pugh Singleton
+        │
+        │ (Best in Java)
+        ▼
+5. Enum Singleton
+        │
+        ▼
+(Most Secure)

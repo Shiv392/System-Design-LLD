@@ -38,3 +38,8 @@ Resule :
 1. SingleTon property break.
 2. multiple objects
 3. Race Condition 
+
+Solution : Use Synchronized method so that other thread will wait if current is already 
+inside the block.
+
+This is called Synchronized singleton;
