@@ -1,0 +1,40 @@
+Situation : Suppose 2 thread hai.
+Thread-1 | Thread-2
+Both are accessing Instance at the same time.
+
+Timeline --------->
+Thread 1 : 
+if(instance == null) true now context switch done, did not cretaed the object.
+Thread 2 : 
+here also instance == null true because thread1 did not created the object. 
+
+Now thread2 will create object1 instance = new Logger();
+
+Now CPU again goes to Thread1 and thread1 again continues from instance == null, here 
+it will again create another instance 
+instance = new Logger() i.e object2
+
+So here Both thread may creates diffrent objects and this breaks singleton rule.
+instance = null
+        │
+Thread-1
+if(instance==null)
+      │
+      │ (context switch)
+      ▼
+Thread-2
+if(instance==null)
+      │
+      ▼
+new Logger()   ← Object-1
+      │
+      ▼
+Back to Thread-1
+new Logger()   ← Object-2.
+
+Problem : here if instance == null and instance = new Logger() both are not Atomic operation.
+Between the execution, there another thread can come. 
+Resule : 
+1. SingleTon property break.
+2. multiple objects
+3. Race Condition 
