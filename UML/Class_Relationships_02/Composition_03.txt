@@ -1,70 +1,48 @@
-🔗 Dependency
-🤔 What is Dependency?
-Dependency means one class temporarily uses another class to complete its work.
-Dependency = Uses-A Relationship
+Composition
+🤔 What is Composition?
+Composition means one class strongly owns another class.
+Composition = Has-A Relationship (Strong Ownership)
+The child object's lifecycle completely depends on the parent object.
+
+If the parent is destroyed, the child is also destroyed.
 
 💡 Example 1
-After payment, send a notification.
-
-class PaymentService {
-    void pay() {
-        NotificationService notification = new NotificationService();
-        notification.send();
+A House contains Rooms.
+class House {
+    private Room room;
+    House() {
+        room = new Room();
     }
 }
-
 UML
-PaymentService - - - - > NotificationService
-✅ PaymentService only uses NotificationService.
-❌ It doesn't permanently store its reference.
+House ◆──── Room
+✅ House creates Room.
+✅ Room cannot exist independently.
+❌ No other class should own this Room.
 
 💡 Example 2
-class OrderService {
-    void placeOrder() {
-        EmailService.sendEmail();
+A Human has a Heart.
+class Human {
+    private Heart heart;
+    Human() {
+        heart = new Heart();
     }
 }
-
-OrderService depends on EmailService only to send an email.
-➡️ Dependency
+Heart is created inside Human.
+If Human dies, Heart also ceases to exist ➡️ Composition
 
 💡 Example 3
-Not Dependency (Association)
-class UserController {
-    private UserService userService;
-}
-
-UserController permanently holds a reference to UserService.
-➡️ Association
-
-Dependency
-class UserController {
-    void login(UserService userService) {
-        userService.login();
+A Car has an Engine.
+class Car {
+    private Engine engine;
+    Car() {
+        engine = new Engine();
     }
 }
-
-UserService is only used inside the method.
-➡️ Dependency
-
-
-📐 UML Symbol======>
-Association
-A -------- B
-
-Dependency
-A - - - - > B
-
-Dashed Arrow (- - - ->) means:
-
-A depends on B.
+Engine belongs to this Car only. Destroy the Car → Engine is also destroyed ➡️ Composition
 
 🎯 Easy Trick
-
-Ask yourself:
-
-Does this class permanently hold the other object's reference?
-
-✅ Yes → Association / Aggregation / Composition
-
-❌ No, only uses it temporarily → Dependency
+Ask yourself: Who creates the object?
+Parent creates it? ✅ Yes.
+Then ask: Can the child exist without the parent? ❌ No.
+➡️ Composition

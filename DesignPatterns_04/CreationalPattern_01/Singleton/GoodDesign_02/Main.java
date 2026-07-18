@@ -1,4 +1,4 @@
-package DesignPatterns_04.CreationalPattern_01.Singleton.GoodDesign;
+package DesignPatterns_04.CreationalPattern_01.Singleton.GoodDesign_02;
 
 import java.util.Stack;
 
