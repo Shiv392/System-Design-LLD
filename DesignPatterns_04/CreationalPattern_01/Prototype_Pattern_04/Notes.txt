@@ -1,0 +1,72 @@
+Problem
+Suppose it is costly to create an object.
+Employee --> read 100 files --> db query --> API Calls --> Complex intialization
+
+every time we use new Employee() is expansive.
+suppose 100 Emplyee bana diye to har bar intialization kro so costly.
+
+Solution ==============>
+1. Create an object & uski copy bana do.
+Original Object ----> Clone() -------> New Object.
+
+Instead of new Object() we can use object.clone();
+
+Employee --> Default Salary ---> Default Department ---> Default Address ;
+
+Employee emp = prototype.clone();
+emp.setName("Shiv");
+
+Structure -------->
+Prototype Interface
+↓
+Clone()
+↓
+Concrete Prototype
+↓
+Client
+
+Implementation ============>
+in Java, we can use clone() or Clonable to create clone objects.
+
+Employee emp1 = new Employee();
+Employee emp2 = emp1.clone();
+
+Prototype ≠ Reference Copy.
+
+⭐⭐⭐Prototype creates new object of same type.
+
+Shallow Copy =========>
+Class Employee --> Address 
+emp1 = new Employee();
+emp2 = emp1;
+
+now emp2.address.city = "Raipur" so emp1.address.city will be updated to Raipur.
+This is called Shallow copy.
+
+Deep Clone ============>
+emp2 = emp1.clone();
+now emp1 and emp2 are independant.
+
+Coding Implementation ===================>
+1. Create Prototype Interface
+2. Create Employee class using this Prototype Interface
+3. In the main.java, use these objects.
+
+Real Uses
+Game Characters
+Document Templates
+Invoice Templates
+Spring Bean Prototype Scope
+Photoshop Layers
+IDE Project Templates
+
+Trade Off
+Pros --------->
+✅ Fast
+✅ Reuse Existing Object
+✅ Reduce Initialization Cost
+
+Cons -------->
+❌ Deep Copy difficult
+❌ Circular references
+❌ Nested Objects cloning
