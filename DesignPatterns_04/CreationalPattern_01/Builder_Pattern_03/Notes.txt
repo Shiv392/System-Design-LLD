@@ -1,0 +1,59 @@
+#Why Builder Pattern ================>
+Suppose we have an object 
+User user = new User("Shiv","Soni",23,"Raipur","9876543210","shiv@gmail.com","Male","Software Engineer");
+
+Problem1 : Constructor is so huge, taking 8-10 perameters.
+Problem2 : Order of perameters has to be perfect else it might create wrong object.
+Problem3 : To pass optional fields, we have to pass Null values like 
+we only need Name, Email, but still we will have to pass all with null values.
+
+What Builder Pattern solves : It builds object step by step.
+
+User user = new UserBuilder()
+        .setName("Shiv")
+        .setEmail("shiv@gmail.com")
+        .setCity("Raipur")
+        .build();
+
+Readable ✔️
+Optional fields ✔️
+Parameter order issue ❌
+
+Structure --------->
+Client -> Builder -> Concrete Builder -> Product
+
+Kab use karte hain? -------->
+Object me bahut fields ho
+Optional fields ho
+Immutable object banana ho
+Complex object banana ho
+
+Examples------------>
+StringBuilder
+Lombok @Builder
+HttpRequest Builder (Java 11)
+NotificationRequest
+User
+Order
+Employee
+
+#Steps to create --> 
+1. Create User class in User.java & UserBuilder class with attributes UserBuilder.java
+2. Create setter method also build that will return to User class 
+3. Now use this userbuilder in the UsreConstructor then acess attributes. 
+4. Now Use this UserBuilder class in the Main.java that will return user object.
+
+Flow --->
+Client (main.java) --> UserBuilder --> setName()|setAge()|setEmail() etc --> build 
+--> new User(Builder) --> User Constructor --> object ready;
+
+Benefits --> 
+new user object gets Immutable i.e we can't directly update its name using user.setName() because
+there is no setter in the user object. 
+
+Java 11
+HttpRequest request = HttpRequest.newBuilder()
+        .uri(...)
+        .header(...)
+        .GET()
+        .build();
