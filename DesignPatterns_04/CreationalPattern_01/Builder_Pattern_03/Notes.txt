@@ -58,3 +58,5 @@ HttpRequest request = HttpRequest.newBuilder()
         .header(...)
         .GET()
         .build();
+
+Tradeoff : Extra builder class.
