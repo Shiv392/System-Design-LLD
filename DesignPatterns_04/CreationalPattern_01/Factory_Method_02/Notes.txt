@@ -105,3 +105,9 @@ to change in factory class not in whole application.
 
 Disadvantages ==========>
 1. New Extrac factory class.
+
+Real World use case 
+1. While using an app that have differnet class like Car, Bike, Truck. Now if we use Car class in 
+100's times in the app, now if in the future if we have to change Car with new class like Van
+then we have to change all these files, that's why we can use factory method centralized class
+that will return Car object without knowing their background implementation.
