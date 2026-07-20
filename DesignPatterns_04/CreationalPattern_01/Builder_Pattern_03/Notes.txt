@@ -50,6 +50,7 @@ Client (main.java) --> UserBuilder --> setName()|setAge()|setEmail() etc --> bui
 Benefits --> 
 new user object gets Immutable i.e we can't directly update its name using user.setName() because
 there is no setter in the user object. 
+I.e Builder don't modify the object, it creates. 
 
 Java 11
 HttpRequest request = HttpRequest.newBuilder()

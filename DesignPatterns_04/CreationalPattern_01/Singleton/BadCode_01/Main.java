@@ -1,6 +1,4 @@
-package DesignPatterns_04.CreationalPattern_01.Singleton.BadCode;
-
-import java.util.Stack;
+package DesignPatterns_04.CreationalPattern_01.Singleton.BadCode_01;
 
 public class Main {
     public static void main(String[]args){

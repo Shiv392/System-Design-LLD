@@ -1,4 +1,4 @@
-package DesignPatterns_04.CreationalPattern_01.Singleton.GoodDesign;
+package DesignPatterns_04.CreationalPattern_01.Singleton.GoodDesign_02;
 
 public class Logger {
     //1. make constructor private so that other class can't make object from this class;

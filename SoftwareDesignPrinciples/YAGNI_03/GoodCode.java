@@ -1,4 +1,4 @@
-package SoftwareDesignPrinciples.YAGNI;
+package SoftwareDesignPrinciples.YAGNI_03;
 
 public class GoodCode {
     public void printName() {
