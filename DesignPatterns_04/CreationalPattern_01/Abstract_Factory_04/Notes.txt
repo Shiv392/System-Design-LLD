@@ -1,0 +1,83 @@
+Now in the Real factory method, we have created different factories for 
+payment like 
+CardFactory & UPIFactory 
+NOw in the future, if we have to add WalletFactoy and more so here the number of files 
+will be increase.
+
+Example -> Creating an UI Framework 
+Windows ke liye chahiye:
+Windows Button
+Windows Checkbox
+Windows TextField
+
+Mac ke liye:
+Mac Button
+Mac Checkbox
+Mac TextField
+
+Ab Factory Method se kya hoga?
+ButtonFactory
+CheckboxFactory
+TextFieldFactory
+
+Har component ke liye alag factory. Jaise-jaise components badhenge, factories bhi badhti jayengi.
+
+Solution : Ek factory puri family create kregi.
+Instead of Button factory, we create Windows Factory that will return
+Windows button, Window Textfield etc.
+Aur Mac Factory  that will return Mac button, Mac Text field etc. 
+
+Structure --> 
+                Client
+                   │
+                   ▼
+          GUIFactory (Abstract Factory)
+            /                  \
+           /                    \
+WindowsFactory             MacFactory
+     │                          │
+     ▼                          ▼
+Button Checkbox          Button Checkbox
+
+Coding Implementation -------->
+AbstractFactory/
+├── Button.java
+├── Checkbox.java
+
+├── WindowsButton.java
+├── WindowsCheckbox.java
+
+├── MacButton.java
+├── MacCheckbox.java
+
+├── GUIFactory.java
+
+├── WindowsFactory.java
+├── MacFactory.java
+
+└── Main.java
+
+1. Create Interface for Buttons | Checkbox also GUIFactory interface.
+2. Create window | mac button ans checkbox files.
+3. Create factor class for WindowFactory.java & MacFactory.java file that will return 
+Window button and checkbox objects.
+4. Now in the main class 
+create object of Window factory & MacFactory.
+create Button and Checkbox object from window factory and mac factory
+render component.
+
+Advantage -->
+1. Open close principle : suppose we have to add linux then without changing mac, windows we can add.
+
+Tradeoff --> 
+Suppose naya product add karna ho (jaise TextField), to:
+GUIFactory change
+WindowsFactory change
+MacFactory change
+
+Ye Abstract Factory ka trade-off hai.
+New Factory (Windows → Mac → Linux) ✅ Easy
+
+New Product (Button → Checkbox → TextField) ❌ Existing factories modify karni padti hain.
+
+Ye hi Abstract Factory ka classic trade-off hai.
