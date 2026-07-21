@@ -90,3 +90,20 @@ implement Payment gateway and can work.
 Why OCP follows : 
 for more integeration, we can create more adapter without making changes in existing.
 
+When to use Adapter
+1. Connect existing code with different classess with not same methods.
+2. 
+Payment Gateway integration
+Database drivers
+AWS SDK
+Stripe
+Razorpay
+Kafka Clients
+Spring Security
+Hibernate Dialects
+Legacy system integration
+
+#More Example ------>
+1. Notification 
+It has Slack service, email service 
+to manage this we have SlackAdapter, EmailAdapter.
