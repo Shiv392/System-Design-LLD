@@ -1,0 +1,8 @@
+What is Structural Design Pattern ⭐⭐⭐⭐⭐ ============>
+Structural Design Pattern tells how to connect existing classes/objects efficiently.
+
+Structural Design Patterns 
+1. Adapter Pattern
+2. Decorator Pattern
+3. Facade Pattern
+4. Proxy Pattern
