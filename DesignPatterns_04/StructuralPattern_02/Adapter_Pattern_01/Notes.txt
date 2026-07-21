@@ -1,0 +1,92 @@
+Definition ⭐⭐⭐⭐
+Adapter Pattern allows two incompatible interfaces to work together without modifying their existing code.
+Simple language me:
+Do classes directly baat nahi kar sakti kyunki unka interface alag hai.
+Adapter unke beech translator ban jata hai.
+
+Real World Example
+Mobile Charger : Tumhare paas USB-C Cable
+Laptop me hai : USB-A Port
+Direct connect? ❌ Nahi
+Beech me lagate ho : USB Adapter
+
+USB-C Cable
+      ↓
+   Adapter
+      ↓
+USB-A Port
+Adapter dono language samajhta hai.
+
+Example ------->
+1. Suppose we have an application with interface 
+interface PaymentGateway{
+    void pay(int amount);
+}
+2. Now we have to integrate with Phonepay SDK that return makePayment method
+class PhonePe{
+    public void makePayment(int amount){
+        System.out.println("Payment Success");
+    }
+}
+3. Now application depands on pay() but phonepay return makePayment().
+Solution : 
+1. change code of Phonepay : not possible because this is third party library
+2. Change application's code : to many changes and high risk of error. 
+
+Problem --> application : pay() Phonepay : makePayment()
+both methods are different.
+
+Solution ===============>
+Put translator between Application and Phonepay class.
+Application --------> Adapter ------------> Phonepay (this is adapter pattern).
+
+UML 
+Client
+    |
+    v
+PaymentGateway
+    ^
+    |
+PhonePeAdapter
+    |
+    v
+PhonePe
+
+Code Implementation ------->
+1. Create PaymentGateway interface
+interface PaymentGateway{
+    void pay(int amount);
+}
+2. Third party SDK
+class Phonepe{
+    public void makePayment(int amount){
+         System.out.println("PhonePe Paid : "+amount);
+    }
+}
+3. Create PhonePayAdapter
+class PhonePayAdapter implements PaymentGateway{
+    private Phonepay phonePay;
+    PhonePayAdapter(Phonepay phonePay){
+        this.phonePay = phonePay;
+    }
+
+    @Override
+    public void pay(int amount){
+        phonePay.makePayment(amount);
+    }
+}
+4. Main.java 
+class Main{
+    public static void main(String[]args){
+        Phonepay phonePay = new Phonepay();
+       PaymentGateway payment = new PhonePayAdapter(phonePay);
+       payment.pay(5000);
+    }
+}
+
+NOw in future, for Razorpay integeration, we can create new RazorPayAdapter that will 
+implement Payment gateway and can work.
+
+Why OCP follows : 
+for more integeration, we can create more adapter without making changes in existing.
+
