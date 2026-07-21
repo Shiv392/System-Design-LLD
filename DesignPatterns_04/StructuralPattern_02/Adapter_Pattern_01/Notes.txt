@@ -102,3 +102,8 @@ Kafka Clients
 Spring Security
 Hibernate Dialects
 Legacy system integration
+
+#More Example ------>
+1. Notification 
+It has Slack service, email service 
+to manage this we have SlackAdapter, EmailAdapter.
