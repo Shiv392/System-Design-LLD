@@ -1,0 +1,71 @@
+Facade Pattern
+Definition
+Facade Pattern provides a simplified interface to a complex subsystem.
+
+Simple language me:
+Bahut saari classes hain, client ko unke baare me kuch nahi pata hona chahiye. Ek single class sab kuch internally handle kare.
+
+📝📝📝
+Facade Pattern provides a unified and simplified interface to a complex subsystem. 
+Instead of exposing multiple classes and requiring the client to coordinate them manually, 
+the Facade encapsulates the workflow and exposes a single high-level API.
+
+class HomeTheaterFacade{
+    private DVDPlayer dvd;
+    private Projector projector;
+    private Speaker speaker;
+    private Lights lights;
+
+    HomeTheaterFacade(){
+        dvd = new DVDPlayer();
+        projector = new Projector();
+        speaker = new Speaker();
+        lights = new Lights();
+    }
+
+    void watchMovie(){
+        lights.off();
+        projector.on();
+        speaker.on();
+        speaker.setVolume();
+        dvd.on();
+        dvd.play();
+    }
+}
+
+Main file  ------->
+public class Main{
+    public static void main(String[] args){
+        HomeTheaterFacade theater = new HomeTheaterFacade();
+        theater.watchMovie();
+    }
+}
+
+Here client is not dealing with each class. we have given an method who does same internally.
+Client only intracts with one method : this is facade method.
+
+Output ---->
+Lights OFF
+Projector ON
+Speaker ON
+Volume Set
+DVD ON
+Movie Playing
+
+#It might look like Abstraction but 
+Abstraction hide the Implementation and Facade hides complexitiy. 
+
+Example ----> Login
+Witout Facade 
+jwtService.generate();
+userService.find();
+roleService.find();
+auditService.log();
+redisService.store();
+
+With Facade
+authenticationFacade.login();
+
+Facade provides simplified interface to the complex systems whereas Abstraction tends to 
+hide Implementation.
+
