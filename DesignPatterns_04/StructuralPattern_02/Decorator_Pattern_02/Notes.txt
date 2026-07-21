@@ -1,0 +1,189 @@
+Definition ⭐⭐⭐⭐
+Decorator Pattern allows you to add new behavior to an object dynamically without modifying its original class.
+
+Simple language me:
+Object wahi rahega, lekin uske upar ek wrapper lag jayega jo extra functionality add karega.
+
+Example : Pizza
+Suppose we have plain pizza 100rs, 
+now customer want 
+cheeze + 50, paper + 50 
+so this is not good to create different pizza for each combination.
+
+Problem : Inheritence has been failed.
+we need to add functionality in the run time.
+
+Solution ====================>
+Har toping ek wrapper bnti jayegi.
+Margherita --> CheeseDecorator --> MushroomDecorator --> OliveDecorator
+Har wrapper previous object ko wrap krte jayega 
+
+Pizza --> Margherita --> Cheese --> Mushroom --> Olive 
+
+Final Object -->
+Olive ( 
+    Mushroom ( 
+        Cheese (
+            Margherita)))
+
+UML --------->
+            Pizza (Interface)
+
+             /          \
+
+Margherita      PizzaDecorator
+
+                    |
+
+         -----------------------
+
+         |          |          |
+
+     Cheese     Mushroom     Olive
+
+Note : Here Decorator is also Pizza. 
+
+Implementation -------->
+1. Component
+interface Pizza{
+    String getDescription();
+    int getCost();
+}
+2. Concrete Component 
+class Margherita implements Pizza{
+    @Override
+    public String getDescription(){
+        return "Margherita";
+    }
+    @Override
+    public int getCost(){
+        return 200;
+    }
+}
+3. Base Decorator : Most important class
+abstract class PizzaDecorator implements Pizza{
+    protected Pizza pizza;
+    PizzaDecorator(Pizza pizza){
+        this.pizza = pizza;
+    }
+}
+Here PizzaDecorator has references of Pizze i.e
+Decorator
+↓
+Wrap
+↓
+Another Pizza
+
+4. Cheese Decorator
+class CheeseDecorator extends PizzaDecorator{
+    CheeseDecorator(Pizza pizza){
+        super(pizza);
+    }
+
+    @Override
+    public String getDescription(){
+        return pizza.getDescription()
+                +" + Cheese";
+    }
+
+    @Override
+    public int getCost(){
+        return pizza.getCost()+50;
+    }
+}
+5. Mushroom Decorator
+class MushroomDecorator extends PizzaDecorator{
+
+    MushroomDecorator(Pizza pizza){
+        super(pizza);
+    }
+
+    @Override
+    public String getDescription(){
+
+        return pizza.getDescription()
+                +" + Mushroom";
+
+    }
+
+    @Override
+    public int getCost(){
+        return pizza.getCost()+60;
+    }
+}
+6. Main file 
+Pizza pizza =
+    new MushroomDecorator(
+        new CheeseDecorator(
+            new Margherita()));
+
+System.out.println(
+        pizza.getDescription());
+
+System.out.println(
+        pizza.getCost());
+
+output : 
+Margherita + Cheese + Mushroom
+310
+
+Flow -------->
+getCost()
+↓
+Mushroom
+↓
+Cheese
+↓
+Margherita
+↓
+200
+↓
++50
+↓
+250
+↓
++60
+↓
+310
+
+Why Not Inheritence ? ⭐⭐⭐⭐
+Suppose 10 toppings.
+
+Inheritance : 2^10 = 1024 classes
+Decorator 10 decorators Bas. Runtime pe combine kar lo.
+
+Real world Example --->
+1. Java IO 
+FileInputStream
+↓
+BufferedInputStream
+↓
+DataInputStream
+
+2. Cofee Example 
+Coffee
+↓
+Milk
+↓
+Sugar
+↓
+Chocolate
+
+3. Logger 
+Logger
+↓
+Timestamp Logger
+↓
+File Logger
+↓
+Encryption Logger
+
+Advantages
+✅ Runtime pe feature add.
+✅ Existing class modify nahi hoti.
+✅ OCP follow.
+✅ Composition over Inheritance.
+
+Disadvantages
+❌ Bahut wrappers ho sakte hain.
+❌ Debugging kabhi-kabhi difficult.

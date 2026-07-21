@@ -1,0 +1,13 @@
+package DesignPatterns_04.StructuralPattern_02.Decorator_Pattern_02.Pizza_01;
+
+public class Margarhita_02 implements PizzaInterface_01 {
+    @Override
+    public String getDescription(){
+        return "Margarhita";
+    }
+
+    @Override
+    public int getCost(){
+        return 200;
+    }
+}
