@@ -1,0 +1,122 @@
+⭐⭐⭐ Definition===========>
+Observer Pattern defines a one-to-many dependency so that when one object changes state, all its dependents are notified automatically.
+Simple Hindi:
+Ek object change hua → sab subscribers ko notification.
+
+⭐⭐⭐ Problem ======>
+Suppose we have Youtube, now after uploading new video so we have to notify all subscribers;
+Without Observer:
+class YouTubeChannel {
+    public void uploadVideo() {
+        shiv.notify();
+        aman.notify();
+        rahul.notify();
+    }
+}
+😂😂 Kal naya subscriber aaya. Fir code modify.
+OCP ❌
+
+Idea
+Instead of
+YouTube --> Shiv + Rahul + Aman
+Hum bolte hain
+YouTube ko sirf ye pata ho "Mere subscribers ka list hai." Bas.
+
+⭐⭐⭐Structure ========>
+          Subject
+             ▲
+             │
+     Concrete Subject
+             │
+        notifyObservers()
+────────────────────────
+          Observer
+             ▲
+     ┌───────┴────────┐
+     │                │
+EmailObserver   MobileObserver
+
+⭐⭐⭐ Coding Implementation ==============>
+Requirement 
+1. Create Youtube with User (Subscriber)
+2. Add subscribe & unsubscribe method to add subscriber
+3. notify all subscriber after uploading video.
+
+Step1 : Create Subscriber Interface 
+public interface Subscriber{
+    void update(String video);
+}
+Step2 : Create User class also add update()
+public class User implements Subscriber{
+    private String name;
+    public User(String name){
+        this.name=name;
+    }
+
+    @Override
+    public void update(String video){
+        System.out.println(name +" received notification : "+ video);
+    }
+}
+Step3 : Create Channel Interface 
+public interface Channel{
+    void subscribe(Subscriber s); //to add Subscriber
+    void unsubscribe(Subscriber s); //to remove Subscriber
+    void notifySubscribers(); //to notify all subscriber
+}
+Step4 : Create Youtube Channel 
+public class YoutubeChannel implements Channel{
+    private List<Subscriber> subscribers = new ArrayList<>();
+    private String video;
+
+    @Override
+    public void subscribe(Subscriber s){
+        subscribers.add(s);
+    }
+
+    @Override
+    public void unsubscribe(Subscriber s){
+        subscribers.remove(s);
+    }
+
+    @Override
+    public void notifySubscribers(){
+        for(Subscriber s: subscribers){
+            s.update(video);
+        }
+    }
+
+    public void uploadVideo(String video){
+        this.video=video;
+        notifySubscribers();
+    }
+}
+Step 5: Main.java class 
+YoutubeChannel channel = new YoutubeChannel();
+
+Subscriber shiv = new User("Shiv");
+Subscriber aman = new User("Aman");
+
+channel.subscribe(shiv);
+channel.subscribe(aman);
+
+channel.uploadVideo("Observer Pattern");
+
+⭐⭐⭐ Real World Example =============>
+1. Youtube :
+Youtube --> Subscriber --> Notification 
+2. Stock Market : 
+Stock Price --> Investors ---> Broker ----> Mobile app
+3. Weather APP : 
+Temperature Change --> Widgets --> Notification 
+4. Kafka : 
+Producer --> Topic --> Consumer 
+5. Spring : 
+ApplicationEventPublisher ---> @EventListener (pure Observer)
+
+⭐⭐⭐ Advantages ==========>
+1. Loose Coupling : Producer dont know who will subscribe information.
+2. OCP : new user can added without modifying existing 
+
+⭐⭐⭐ Disadvantages =========>
+Suppose we have 10000's of user then notifying each of them is costly.
