@@ -1,0 +1,47 @@
+⭐⭐⭐Problem =============>
+Suppose we have an app with UPIPayment, CardPayment. Now in the future if i have to add 
+WalletPayment | Netbanking 
+and if we have an code like this 
+
+class PaymentService{
+    public void pay(String type){
+        if(type.equals("UPI")){}
+        else if(type.equals("CARD")){}
+    }
+}
+This breaks Open Close Principle.
+
+⭐⭐⭐ Solution =========> Stragegy Pattern
+Define a family of algorithms, encapsulate each one, and make them interchangeable.
+Hindi:
+Ek hi kaam karne ke multiple tareeke hain.
+Har tareeka ek class me then run time me choose kro.
+
+Structure 
+          Strategy
+             ▲
+      ┌──────┼────────┐
+      │      │        │
+   UPI    Card    Paypal
+          ▲
+          │
+   PaymentService
+
+⭐⭐⭐ Coding Implementation =========> as same as payment app in OCP.
+
+⭐⭐⭐ Real Examples ======>
+1. Sorting : 
+Sort ->    Quick Sort | Bubble Sort | Merge Sort (Run time pe choose);
+2. Compression :
+Zip | RAR | 7ZIP
+3. Authentication :
+JWT | Oauth | Session
+4. Notification : 
+Email | Slack | MSteams | Twillio
+
+⭐⭐⭐ Advantages =========>
+✅ No if-else
+✅ OCP follow
+✅ Easy testing
+✅ Easy extension
+

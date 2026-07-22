@@ -51,6 +51,7 @@ PhonePeAdapter
     |
     v
 PhonePe
+Here Client will interact with Adapter and adapter will call phonepay class internally.
 
 Code Implementation ------->
 1. Create PaymentGateway interface
