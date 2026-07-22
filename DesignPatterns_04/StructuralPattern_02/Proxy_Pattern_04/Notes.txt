@@ -1,0 +1,78 @@
+⭐⭐ What is Proxy Pattern ============>
+Proxy pattern create an new object between Client(Main.java) & Actual object.
+This proxy objects decides what to do like lazy initialization, eager, object creation
+access modifier etc.
+
+Client
+   |
+   v
+Proxy
+   |
+   v
+Real Object
+
+⭐⭐ Real Life Example ================>
+1. ATM -------------->
+You
+ ↓
+ATM
+ ↓
+Bank Server
+Tum directly bank server se baat nahi karte.
+ATM = Proxy
+
+2. Spring Security----------->
+Request
+   ↓
+Security Proxy
+   ↓
+Controller
+
+3. Hibernate Lazy Loading -------->
+Employee
+employee.getDepartment()
+Department object tabhi load hoga jab call karoge.
+Beech me proxy hai.
+
+4. Spring AOP 
+5. CGLIB Proxy
+
+⭐⭐⭐ Types of Proxy ================>
+1. Virtual Proxy : Lazy Loading (image created only when display() calls);
+Image image = new ProxyImage();
+image.display();
+
+2. Protection Proxy : add an protection layer for permission check.
+Admin yes --> Delete Database
+       👇
+        permission deny.
+
+3. Remote Proxy : Object is on different machine.
+Client --> Remote Proxy --> Remote Server
+EXM : Fiegn Client | gRPC | RMI
+
+4. Cache Proxy : 
+Client --> Cache Proxy (if data available)----> return  
+            👇not available
+            return from db.
+
+⭐⭐⭐ Structure =====================>
+          Subject (Interface)
+             /      \
+            /        \
+RealSubject      Proxy
+
+⭐⭐⭐ Coding Implementation ===================>
+1. Create Intface ImageInterface
+2. Create  RealImage class with loadingDist and display()
+3. Create ProxyImage class that will load and call display() of RealImage.
+4. Create Main.java class i.e Client.
+
+Output 
+Loading from disk....
+Displaying image....
+Displaying image...
+Here object is already created for the 2nd time that's why directly call Displaying image method.
+
+
+
