@@ -1,4 +1,7 @@
 ⭐⭐⭐ Definition =========>
+Chain of Responsibility is a behavioral design pattern that passes a request through a chain of handlers until one of them handles it, 
+avoiding tight coupling between the sender and the receiver.
+
 Chain of Responsibility helps to design class or object so that each object knows 
 what they have to do and if they can't do work then will pass this work to their next 
 reference.
