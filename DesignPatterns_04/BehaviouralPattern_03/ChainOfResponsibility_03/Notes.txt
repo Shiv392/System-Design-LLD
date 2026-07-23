@@ -1,4 +1,7 @@
 ⭐⭐⭐ Definition =========>
+Chain of Responsibility is a behavioral design pattern that passes a request through a chain of handlers until one of them handles it, 
+avoiding tight coupling between the sender and the receiver.
+
 Chain of Responsibility helps to design class or object so that each object knows 
 what they have to do and if they can't do work then will pass this work to their next 
 reference.
@@ -99,3 +102,33 @@ public class Main{
         tl.approve(7);
     }
 }
+
+⭐⭐⭐ Real world examples ================>
+1. Spring Security : 
+Request
+↓
+Authentication Filter
+↓
+JWT Filter
+↓
+Authorization Filter
+↓
+Controller
+
+2. Servelet Filters : 
+Request
+↓
+Logging Filter
+↓
+Authentication Filter
+↓
+Compression Filter
+↓
+Controller
+
+3. Exception Handling : 
+Handler1
+↓
+Handler2
+↓
+Handler3

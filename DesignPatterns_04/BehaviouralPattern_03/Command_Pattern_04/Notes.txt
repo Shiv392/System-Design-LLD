@@ -1,0 +1,109 @@
+⭐⭐⭐ Definition ============>
+Command Pattern encapsulates a request as an object, 
+thereby decoupling the sender (Invoker) from the receiver and allowing requests to be queued, 
+logged, delayed, or undone.
+
+⭐⭐⭐ Problem ==========>
+Suppose we have an tv class with on | off method 
+now in case we have to use this methods then 
+
+TV tv = new TV();
+tv.turnOn();
+tv.turnOff();
+tv.volumeUp();
+
+Now in future if we have to use this on Alexa | Mobile Phone | Remot then we have 
+to use this class in each of the classes also when i made any changes in the TV,
+we also have to make changes in Alexa | Phone | Remote.
+This breaks OCP & There is tight coupling.
+
+⭐⭐⭐ Solution =========>
+Convert Request to Object so that other can use .
+Instead : 
+Remove -----> tv.turnOn();
+implement : 
+Remote
+↓
+TurnOnCommand Object
+↓
+TV
+i.e call method call inside any object. 
+
+⭐⭐⭐ Code Implementation =================>
+Step 1. Command Interface 
+interface Command{
+    void execute();
+}
+Step2 : Receiver 
+class TV{
+    public void turnOn(){
+        System.out.println("TV ON");
+    }
+    public void turnOff(){
+        System.out.println("TV OFF");
+    }
+}
+Step 3 : Concrete Command for TurnOn & TurnOff
+class TurnOnCommand implements Command{
+    private TV tv;
+    public TurnOnCommand(TV tv){
+        this.tv = tv;
+    }
+    @Override
+    public void execute(){
+        tv.turnOn();
+    }
+}
+class TurnOffCommand implements Command{
+
+    private TV tv;
+
+    public TurnOffCommand(TV tv){
+        this.tv = tv;
+    }
+
+    @Override
+    public void execute(){
+        tv.turnOff();
+    }
+}
+Step 4 : Invoker (dont know about TV, only knows about Command)
+class Remote{
+    private Command command;
+    public void setCommand(Command command){
+        this.command = command;
+    }
+    public void pressButton(){
+        command.execute();
+    }
+}
+Step 5 : Client 
+public class Main{
+    public static void main(String[] args){
+        TV tv = new TV();
+
+        Command on = new TurnOnCommand(tv);
+        Command off = new TurnOffCommand(tv);
+
+        Remote remote = new Remote();
+
+        remote.setCommand(on);
+        remote.pressButton();
+
+        remote.setCommand(off);
+        remote.pressButton();
+    }
+}
+Output : 
+TV ON
+TV OFF
+
+⭐⭐⭐ ============>
+Flow 
+Client
+↓
+Remote
+↓
+TurnOnCommand
+↓
+TV
