@@ -99,3 +99,33 @@ public class Main{
         tl.approve(7);
     }
 }
+
+⭐⭐⭐ Real world examples ================>
+1. Spring Security : 
+Request
+↓
+Authentication Filter
+↓
+JWT Filter
+↓
+Authorization Filter
+↓
+Controller
+
+2. Servelet Filters : 
+Request
+↓
+Logging Filter
+↓
+Authentication Filter
+↓
+Compression Filter
+↓
+Controller
+
+3. Exception Handling : 
+Handler1
+↓
+Handler2
+↓
+Handler3
