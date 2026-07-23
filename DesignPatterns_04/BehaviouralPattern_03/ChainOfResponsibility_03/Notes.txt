@@ -1,0 +1,101 @@
+⭐⭐⭐ Definition =========>
+Chain of Responsibility helps to design class or object so that each object knows 
+what they have to do and if they can't do work then will pass this work to their next 
+reference.
+
+⭐⭐⭐Problem ===================>
+Suppose we have an Leave approval system in company 
+Rules : 
+Employee Leave Request
+↓
+Team Lead (1-2 days) can approve upto 2 days of leave 
+↓
+Manager (3-5 days) can approvae 3-5 days of leave 
+↓
+Director (6+ days) can approave 6+days of leave. 
+
+Now if employee need 1-2 days of leave then team lead can approove.
+
+Without Chain Pattern:
+if(days <= 2){
+    teamLead.approve();
+}
+else if(days <= 5){
+    manager.approve();
+}
+else{
+    director.approve();
+}
+
+Problem:
+Tight coupling
+Har baar if-else modify karna padega.
+Kal CEO add hua to pura code change.
+
+⭐⭐⭐ Solution ===========> 
+Each handlar knows their work also have reference to next handlar.
+if Object say 'YES' then let them handle else path to next reference;
+
+UML :
+              Handler
+         -----------------
+         nextHandler
+         handle()
+             ▲
+      ------------------
+      ▲       ▲       ▲
+ TeamLead  Manager Director
+
+⭐⭐⭐Coding Implementation ==============>
+1. Create LeaveHandlar : 
+abstract class LeaveHandler {
+    protected LeaveHandler next;
+    public void setNext(LeaveHandler next){
+        this.next = next;
+    }
+    public abstract void approve(int days);
+}
+2. Team Lead : 
+class TeamLead extends LeaveHandler{
+    @Override
+    public void approve(int days){
+        if(days <= 2){
+            System.out.println("Approved by Team Lead");
+        }
+        else if(next != null){
+            next.approve(days);
+        }
+    }
+}
+3. Manager 
+class Manager extends LeaveHandler{
+    @Override
+    public void approve(int days){
+        if(days <= 5){
+            System.out.println("Approved by Manager");
+        }
+        else if(next != null){
+            next.approve(days);
+        }
+    }
+}
+4. Director
+class Director extends LeaveHandlar{
+    @Override
+    public void approve(int days){
+        System.out.println("Approved by Director");
+    }
+}
+5. Client Main.java  
+public class Main{
+    public static void main(String[] args){
+        LeaveHandler tl = new TeamLead();
+        LeaveHandler manager = new Manager();
+        LeaveHandler director = new Director();
+
+        tl.setNext(manager); //adding next reference of Team lead 
+        manager.setNext(director); //adding next reference of manager 
+
+        tl.approve(7);
+    }
+}
