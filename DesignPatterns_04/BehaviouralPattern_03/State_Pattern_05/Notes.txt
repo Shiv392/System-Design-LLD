@@ -1,0 +1,100 @@
+⭐⭐⭐Definition ================>
+Each object/class defines the state.
+
+Problems ==========>
+Suppose we have an music player with States : 
+1. Playing  | 2. Paused | 3. Stopped 
+
+Now when user click on play button then state : 
+Playing : not affected as already Playing
+Paused : Restart the song
+Stopped : Start the song. 
+Now if we hard code conditions like 
+
+class MusicPlayer {
+    String state;
+    void play() {
+        if(state.equals("STOPPED")){}
+        else if(state.equals("PAUSED")){}
+        else if(state.equals("PLAYING")){}
+    }
+}
+Now in future if we have to add more states like Buffering, next so main class would change 
+i.e this is not open for extentions and breaks OCP.
+
+⭐⭐⭐State Pattern Idea =============>
+Har state apna behavior khud implement kre.
+Instead of :
+Player decides behavior 
+State tells :
+Main Playing state hu.
+Play dabaya? -> Ignore.
+Pause dabaya? -> Paused me convert karo.
+
+Structure
+        +----------------+
+        |    Context     |
+        | MusicPlayer    |
+        +----------------+
+                |
+                |
+         currentState
+                |
+        -------------------
+        |        |        |
+   Playing   Paused   Stopped
+
+⭐⭐⭐Implementation ========>
+Step1 : Create interface for State
+interface State{
+    void play(MusicPlayer player);
+    void pause(MusicPlayer player);
+    void stop(MusicPlayer player);
+}
+Step2 : Concrete States 
+create PlayingStates, PausedState, StoppedState;
+Step3 : Create Concrete MusicPlayer class .
+Step4 : Create Main.java Client file. 
+
+⭐⭐⭐ UML =================>
+                  +----------------+
+                  |    State       |
+                  +----------------+
+                  | play()         |
+                  | pause()        |
+                  | stop()         |
+                  +----------------+
+                     ^      ^      ^
+                     |      |      |
+     +---------------+      |      +----------------+
+     |                      |                       |
++-------------+     +--------------+      +---------------+
+|PlayingState |     |PausedState   |      |StoppedState   |
++-------------+     +--------------+      +---------------+
+                    ^
+                    |
+             uses current state
+             +--------------------+
+             |   MusicPlayer      |
+             +--------------------+
+             | State state        |
+             +--------------------+
+
+⭐⭐⭐ Advantages ============>
+✅ Removes huge if-else / switch blocks.
+✅ Follows Open/Closed Principle—new state add karne ke liye existing logic ko kam modify karna padta hai.
+✅ Har state ka behavior ek jagah hota hai.
+✅ Code maintain aur test karna easy.
+
+Disadvantages ============>
+❌ Har state ke liye alag class.
+❌ Chhote/simple cases me over-engineering ho sakti hai.
+
+Real World Uses =============>
+🎵 Music Player (Play/Pause/Stop)
+📱 Mobile Screen (Locked/Unlocked)
+🚦 Traffic Signal
+🚪 Door (Open/Closed/Locked)
+🛒 Order Lifecycle (Created → Paid → Shipped → Delivered → Cancelled)
+🎮 Game Character (Idle, Running, Jumping, Attacking)
+📄 Document Workflow (Draft → Review → Approved → Published)

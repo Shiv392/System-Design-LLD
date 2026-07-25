@@ -1,0 +1,88 @@
+⭐⭐⭐ Problem ==============>
+Suppose we have 
+Shape: 2 class 
+- Circle
+- Square
+
+Color: 2 class 
+- Red
+- Blue
+
+now total class woulld be 4 ie. RedCircle | BlueCircle | RedSquare | BlueSquare 
+and if class is 10 so classess can go to 100.
+This is called Class Explosion.
+
+Here Inheritance is combining both dimensions.
+Shape
+    |
+Circle
+    |
+RedCircle
+Now here classess are tightly coupled and we want something indepandant but can be add
+at run this.
+
+This problems solves by Bridge Pattern. 
+
+Bridge Pattern Idea
+Instead of : Circle IS A RedCircle
+hum bolenge : Circle HAS A Color
+Composition over Inheritance ❤️
+
+Structure ===========> Shape and color are both indepandant. 
+          Shape
+            |
+     ----------------
+     |              |
+   Circle        Square
+        |
+        | has
+        V
+      Color
+     /     \
+   Red     Blue
+
+⭐⭐⭐ Implementation ============>
+Step1 : create Interface Color;
+Step2 : Create concrete class RedColor & BlueColor 
+Step3 : Create an abstrac class shape that has color object.
+Here shape has color relationship.
+Step4 : Create concrete classess for Circle, Square 
+Step5 : Create User class Main.java
+
+UML ================>
+              +------------------+
+              |      Shape       |
+              +------------------+
+              | Color color      |
+              | draw()           |
+              +------------------+
+                     ^
+              -----------------
+              |               |
+          Circle          Square
+
+
+                    has
+                     |
+                     V
+
+             +----------------+
+             |     Color      |
+             +----------------+
+             | applyColor()   |
+             +----------------+
+                  ^
+            ---------------
+            |             |
+          Red          Blue
+
+Advantages =================>
+✅ Avoids class explosion.
+✅ Composition over inheritance.
+✅ Dono hierarchies independently grow kar sakti hain.
+✅ Runtime flexibility.
+✅ Open/Closed Principle follow karta hai.
+
+Disadvantages ===============>
+❌ Chhote projects me unnecessary abstraction lag sakta hai.
+❌ Classes thodi zyada ho jaati hain.
