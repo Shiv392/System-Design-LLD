@@ -5,6 +5,7 @@
 
 Simple Words
 
+# class should not create their dependancy, it should provided via inject. 
 # Depend on Interface, not on Concrete Class.
 # Business Logic ko direct implementation ke sath tightly couple nahi hona chahiye.
 # High level module ko low level module ke implementation details nahi pata hone chahiye.
@@ -30,6 +31,7 @@ class NotificationManager {
     }
 }
 
+Here NotificationManager is creating emailService object directly 
 # Problems
 
 1. Tight Coupling
@@ -76,13 +78,14 @@ class EmailNotification implements NotificationService {
 }
 
 class SMSNotification implements NotificationService {
-
     public void send(String message){
         System.out.println("SMS : " + message);
     }
 }
 
 
+# Here we are providing external dependencies to the NotificaitonManager 
+# So notification manager dont have to create object directly.
 Step 3 : Depend On Interface
 class NotificationManager {
     private NotificationService notificationService;
